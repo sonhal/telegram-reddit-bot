@@ -9,7 +9,7 @@ def read_env():
     if env_file.exists():
         with env_file.open("r") as env_file:
             for line in env_file.readlines():
-                if line.strip().startswith("#"):
+                if line.strip().startswith("#") or line.isspace():
                     continue
                 line = line.rstrip()
                 key, val = line.split("=")

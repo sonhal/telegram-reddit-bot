@@ -1,19 +1,21 @@
-from bot.reddit import reddit_connector
+from connectors import reddit_connector, telegram_connector
+
+COMMANDS = ("top10", "top")
+
+
+def handle_command(subreddit, command):
+    if command in COMMANDS:
+        return reddit_connector.get_subreddit_hot(subreddit, 10)
+
+
 
 
 def main():
-    reddit_con = reddit_connector.get_get_configured_connection()
-
-    # assume you have a Reddit instance bound to variable `reddit`
-    subreddit = reddit_con.subreddit('redditdev')
-
-    print(subreddit.display_name)  # Output: redditdev
-    print(subreddit.title)  # Output: reddit Development
-    print(subreddit.description)  # Output: A subreddit for discussion of ...
-
-
-
+    res = handle_command("cars", "top10")
+    for r in res:
+        print(r.title)
 
 
 if __name__ == '__main__':
-    main()
+    tb = telegram_connector.TelegramBot()
+    tb.start()
