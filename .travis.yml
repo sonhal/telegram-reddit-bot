@@ -1,10 +1,23 @@
+global:
+  - CC_TEST_REPORTER_ID=579ccf0384910a1650a7f654a8f3c50836636b768fcd03fa37f49bcbeb82876a
 language: python
+
 python:
   - "3.6-dev"  # 3.6 development branch
   - "3.7-dev"  # 3.7 development branch
 # command to install dependencies
 install:
   - pip install -r requirements.txt
+  
+# test coverage service
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 # command to run tests
 script:
   - pytest
+
+# send results to coverage service
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
