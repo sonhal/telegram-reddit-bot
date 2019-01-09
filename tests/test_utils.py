@@ -20,3 +20,8 @@ def test_read_env__return_mapping():
 def test_read_env__redundant():
     res = utils.read_env()
     assert isinstance(res, Mapping)
+
+
+def test_read_env__redundant_2():
+    res = utils.read_env()
+    assert isinstance(res, Mapping)
