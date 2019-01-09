@@ -1,5 +1,6 @@
-global:
-  - CC_TEST_REPORTER_ID=579ccf0384910a1650a7f654a8f3c50836636b768fcd03fa37f49bcbeb82876a
+env:
+  global:
+    - CC_TEST_REPORTER_ID=579ccf0384910a1650a7f654a8f3c50836636b768fcd03fa37f49bcbeb82876a
 language: python
 
 python:
