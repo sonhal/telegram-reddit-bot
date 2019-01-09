@@ -16,7 +16,6 @@ before_script:
   - ./cc-test-reporter before-build
 # command to run tests
 script:
-  - pytest
   - coverage
 # send results to coverage service
 after_script:
