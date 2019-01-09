@@ -8,7 +8,7 @@ python:
 # command to install dependencies
 install:
   - pip install -r requirements.txt
-  
+  - pip install coverage
 # test coverage service
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
@@ -17,7 +17,7 @@ before_script:
 # command to run tests
 script:
   - pytest
-
+  - coverage
 # send results to coverage service
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
